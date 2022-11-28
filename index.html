@@ -91,6 +91,7 @@
     class DivideByZero extends Error {
       constructor(message) {
         super(message);
+        this.name = "DivideByZero";
       }
     }
     
@@ -112,7 +113,7 @@
       try {
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
-        throw new Error('some error has occured');
+        throw new Error('Some error has occured');
       } finally {
         alert("finished operation");
       }
