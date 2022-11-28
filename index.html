@@ -88,6 +88,12 @@
   </main>
 
   <script>
+    class DivideByZero extends Error {
+      constructor(message) {
+        super(message);
+      }
+    }
+    
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,8 +101,24 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
-    });
+      let calculate = document.getElementById('calculate');
+      // throw divide by zero error
+      if (operator == "/") {
+          if (secondNum == '0') {
+            throw new DivideByZero("cannot divide by zero");
+          }
+      }
+      // try catch finally
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        throw new Error('some error has occured');
+      } finally {
+        alert("finished operation");
+      }
+
+      });
+      
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
@@ -207,6 +229,7 @@
         console.log("Sadly an error happened my friend");
       }
     });
+    
     
   </script>
 </body>
