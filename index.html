@@ -102,6 +102,112 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // log
+    let cLog = errorBtns[0];
+    cLog.addEventListener('click', function() {
+      console.log("Console Log Demo");
+    });
+    // error
+    let cError = errorBtns[1];
+    cError.addEventListener('click', function() {
+      console.error("Console Error Demo");
+    });
+    // count
+    let cCount = errorBtns[2];
+    cCount.addEventListener('click', function() {
+      console.count("Console Count");
+    });
+    //warn
+    let cWarn = errorBtns[3];
+    cWarn.addEventListener('click', function() {
+      console.warn("Console Warn");
+    });
+    // assert
+    let cAssert = errorBtns[4];
+    cAssert.addEventListener('click', function() {
+      const x = 5;
+      const y = 3;
+      const reason = 'x is expected to be less than y';
+      console.assert(x < y, {x, y, reason});
+    });
+    // clear
+    let cClear = errorBtns[5];
+    cClear.addEventListener('click', function() {
+      console.clear();
+    });
+    // console dir
+    let cDir = errorBtns[6];
+    cDir.addEventListener('click', function() {
+      console.dir(document.body);
+    });
+    // console dirxml
+    let cDirxml = errorBtns[7];
+    cDirxml.addEventListener('click', function() {
+      console.dirxml(document);
+    });
+    // group start and end
+    let cGroupStart = errorBtns[8];
+    cGroupStart.addEventListener('click', function() {
+      const label = 'Buttons Clicked';
+      console.group(label);
+      let button = document.querySelector('button');
+      button.addEventListener('click ', function() {
+        if (button.innerHTML == "Console Group End") {
+          console.groupEnd(label);
+        }
+        else {
+          console.info(button);
+        }
+      });
+    });
+    // console table
+    let cTable = errorBtns[10];
+    cTable.addEventListener('click', function() {
+      var info = [
+        {
+          name: 'Maggie',
+          age: '20',
+        },
+        {
+          name: 'Anna',
+          age: '22',
+        },
+        {
+          name: 'Henri',
+          age: '23',
+        }
+      ];
+      console.table(info);
+    });
+    //timer start
+    let cTimer = errorBtns[11];
+    cTimer.addEventListener('click', function() {
+      console.time();
+    });
+    // timer end
+    let cTimerEnd = errorBtns[12];
+    cTimerEnd.addEventListener('click', function() {
+      console.timeEnd();
+    });
+    // console trace
+    let cTrace = errorBtns[13];
+    cTrace.addEventListener('click', function() {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    });
+    //Trigger a Global Error
+    let cGlobalError = errorBtns[14];
+    cGlobalError.addEventListener('click', function() {
+      console.log("Global Error!");
+      window.onerror = () => {
+        console.log("Sadly an error happened my friend");
+      }
+    });
+    
   </script>
 </body>
 
