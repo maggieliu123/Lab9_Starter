@@ -87,7 +87,22 @@
     </section>
   </main>
 
+
+  
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "9e24854090b2477a992b3d177f7354bb"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                          
+
+
+
+
+  <script>
+    // custom error
     class DivideByZero extends Error {
       constructor(message) {
         super(message);
@@ -225,8 +240,10 @@
     //Trigger a Global Error
     let cGlobalError = errorBtns[14];
     cGlobalError.addEventListener('click', function() {
-      console.log("Global Error!");
-      window.onerror = () => {
+      console.log("Uh Oh! Global Error!");
+      // on purpose error
+      aboom('Boom!');
+      window.onerror = function () {
         console.log("Sadly an error happened my friend");
       }
     });
